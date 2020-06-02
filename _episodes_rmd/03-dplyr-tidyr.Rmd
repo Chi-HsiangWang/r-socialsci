@@ -284,6 +284,14 @@ interviews %>%
     ungroup()
 ```
 
+Alternatively, use the `.groups` option to upgroup:
+
+```{r, purl = FALSE}
+interviews %>%
+    group_by(village, memb_assoc) %>%
+    summarize(mean_no_membrs = mean(no_membrs), .group = "drop")
+```
+
 When grouping both by `village` and `membr_assoc`, we see rows in our table for
 respondents who did not specify whether they were a member of an irrigation
 association. We can exclude those data from our table using a filter step.
